@@ -17,15 +17,15 @@ namespace insecure_bank_net.Dao
         }
         
         public List<CreditAccount> FindCreditAccountsByUsername(string username) {
-
-            var str = "select * from creditaccount  where username='" + username + "'";
-            return dbContext.Creditaccount.FromSqlRaw(str).ToList();
+            var str = "select * from creditaccount where username = {0}";
+            return dbContext.Creditaccount.FromSqlRaw(str, username).ToList();
+        }
         }
 
         public int UpdateCreditAccount(int cashAccountId, double round) {
-
-            var sql = "UPDATE creditAccount SET availablebalance='" + round + "' WHERE cashaccountid ='" + cashAccountId + "'";
-            return dbContext.Database.ExecuteSqlRaw(sql);
+            var sql = "UPDATE creditAccount SET availablebalance = {0} WHERE cashaccountid = {1}";
+            return dbContext.Database.ExecuteSqlRaw(sql, round, cashAccountId);
+        }
         }
         
     }
