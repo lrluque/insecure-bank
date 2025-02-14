@@ -16,10 +16,11 @@ namespace insecure_bank_net.Dao
 
         public int InsertTransfer(Transfer transfer)
         {
-            var sql = "INSERT INTO transfer (fromAccount, toAccount, description, amount, fee, username, date) " +
-                      "VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6})";
-            return dbContext.Database.ExecuteSqlRaw(sql, transfer.FromAccount, transfer.ToAccount,
-                transfer.Description, transfer.Amount, transfer.Fee, transfer.Username, transfer.Date);
+var sql = "INSERT INTO transfer (fromAccount, toAccount, description, amount, fee, username, date) " +
+          "VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)";
+return dbContext.Database.ExecuteSqlRaw(sql, 
+    transfer.FromAccount, transfer.ToAccount, transfer.Description, 
+    transfer.Amount, transfer.Fee, transfer.Username, transfer.Date);
         }
     }
 }
