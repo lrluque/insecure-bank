@@ -1012,7 +1012,10 @@
                 hint = this.inputView.getHintValue();
                 if (hint !== "" && query !== hint) {
                     suggestion = this.dropdownView.getFirstSuggestion();
-                    this.inputView.setInputValue(suggestion.value);
+                    if (suggestion) {
+                        this.inputView.setInputValue(suggestion.value);
+                        this.eventBus.trigger("autocompleted", suggestion.datum, suggestion.dataset);
+                    }
                     this.eventBus.trigger("autocompleted", suggestion.datum, suggestion.dataset);
                 }
             },
