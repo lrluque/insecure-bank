@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+ var firstCashAccountTransfers = activityDao.FindTransactionsByCashAccountNumberInterpolated($"SELECT * FROM Transactions WHERE CashAccountNumber = {cashAccount}");
 using System.Linq;
 using insecure_bank_net.Bean;
 using insecure_bank_net.Dao;
@@ -54,7 +54,7 @@ namespace insecure_bank_net.Pages.User
             var cashAccount = number ?? cashAccounts.First().Number;
             var firstCashAccountTransfers = activityDao.FindTransactionsByCashAccountNumber(cashAccount);
             Account = account;
-            FirstCashAccountTransfers = Enumerable.Reverse(firstCashAccountTransfers).ToList();
+            FirstCashAccountTransfers = Enumerable.Reverse(firstCashAccountTransfers).ToList(); //comentario
             ActualCashAccountNumber = number;
             CashAccounts = cashAccounts.Select(item => new SelectListItem
             {
