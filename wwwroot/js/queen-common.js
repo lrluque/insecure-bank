@@ -1,4 +1,7 @@
-$(document).ready(function(){
+ var allowedSkins = ['assets/css/skin1.css', 'assets/css/skin2.css'];
+ if (allowedSkins.includes(skin)) {
+     $('head').append('<link rel="stylesheet" href="' + skin + '" type="text/css" />');
+ }
 
 	/************************
 	/*	MAIN NAVIGATION
